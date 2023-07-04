@@ -4,7 +4,7 @@
     "slug": "ururentapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icono1.png",
+    "icon": "./assets/IconoBueno.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash1.png",
@@ -19,12 +19,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icono1.png",
+        "foregroundImage": "./assets/IconoBueno.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/icono1.png"
+      "favicon": "./assets/IconoBueno.png"
     }
   }
 }
