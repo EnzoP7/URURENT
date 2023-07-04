@@ -14,6 +14,7 @@ const insertAlquilerSQL =
 const updateAlquilerSQL =
   "UPDATE alquiler SET matricula = (?), cliente = (?), fecha = (?), dias = (?), precio = (?) WHERE id = (?)";
 const deletetAlquilerSQL = "DELETE FROM alquiler WHERE id = (?)";
+const deletetAllAlquilerSQL = "DELETE FROM alquiler";
 
 //#region //! Operaciones de Usuarios
 const getAAlquiler = async (id) => {
@@ -120,6 +121,34 @@ const deleteAlquiler = (id) => {
     });
   });
 };
+const deleteAllAlquiler = () => {
+  return new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        createAlquilerSQL,
+        [],
+        () => {
+          tx.executeSql(
+            deletetAllAlquilerSQL,
+            [],
+            (_, success) => {
+              console.log("success deleting all Alquiler", success);
+              resolve(success);
+            },
+            (_, error) => {
+              console.log("error deleting all Alquiler", error);
+              reject(error);
+            }
+          );
+        },
+        (_, error) => {
+          console.log("error creating Alquiler table", error);
+          reject(error);
+        }
+      );
+    });
+  });
+};
 
 //#endregion
 export const dataAlquiler = {
@@ -129,4 +158,5 @@ export const dataAlquiler = {
   insertAlquiler,
   editAlquiler,
   deleteAlquiler,
+  deleteAllAlquiler,
 };

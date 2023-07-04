@@ -15,7 +15,12 @@ const Home = () => {
             info="Lista Alquileres"
             screenName="ListaAlquiler"
           />
-          <Boton nombre="addfile" info="Generar Planilla" screenName="Home" />
+          <Boton
+            nombre="microsoft-excel"
+            info="Generar Excel"
+            screenName="Planilla"
+            icono="MaterialCommunityIcons"
+          />
         </View>
       </Layout>
     </>

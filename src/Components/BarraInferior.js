@@ -20,11 +20,6 @@ const BarraInferior = () => {
               <Entypo name="home" size={80} color="#fab33e" />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={handlePress}>
-            <View style={styles.iconContainer}>
-              <Ionicons name="menu" size={80} color="#fab33e" />
-            </View>
-          </TouchableOpacity>
         </View>
       </View>
     </>
@@ -40,7 +35,7 @@ const styles = StyleSheet.create({
   },
   FooterView: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     paddingVertical: 5,
   },
   iconContainer: {

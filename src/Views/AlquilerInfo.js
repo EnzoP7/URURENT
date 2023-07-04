@@ -15,6 +15,11 @@ const AlquilerInfo = ({ route }) => {
   const handleModalClose = () => {
     setShowModal(false);
   };
+  const fechaInicial = new Date(alquiler.fecha);
+  const dia = fechaInicial.getDate();
+  const mes = fechaInicial.getMonth() + 1;
+  const anio = fechaInicial.getFullYear();
+  const fechaFormateada = `${dia}/${mes}/${anio}`;
   return (
     <>
       <Layout>
@@ -24,7 +29,7 @@ const AlquilerInfo = ({ route }) => {
             <Text style={styles.titulo}>ID: {alquiler.id}</Text>
             <Text style={styles.titulo}>Cliente: {alquiler.cliente}</Text>
             <Text style={styles.titulo}>Auto: {alquiler.matricula}</Text>
-            <Text style={styles.titulo}>Fecha: {alquiler.fecha}</Text>
+            <Text style={styles.titulo}>Fecha: {fechaFormateada}</Text>
             <Text style={styles.titulo}>Dias: {alquiler.dias}</Text>
             <Text style={styles.titulo}>Precio: {alquiler.precio}</Text>
           </View>

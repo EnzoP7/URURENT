@@ -18,13 +18,14 @@ const ListaAlquiler = () => {
   const handleAlquilerPress = (alquiler) => {
     navigation.navigate("InfoAlquiler", { alquiler });
   };
-  const { state, dispatch } = useContext(AlquilerContext);
+  const { state } = useContext(AlquilerContext);
   console.log("EL ESTADO:", state);
   const [showModal, setShowModal] = useState(false);
   const [modalMensaje, setModalMensaje] = useState("");
   const handleModalClose = () => {
     setShowModal(false);
   };
+
   return (
     <>
       <Layout2xd>
@@ -39,17 +40,25 @@ const ListaAlquiler = () => {
               <FlatList
                 style={styles.FlatList}
                 data={state}
-                renderItem={({ item }) => (
-                  <TouchableOpacity onPress={() => handleAlquilerPress(item)}>
-                    <View style={styles.itemContainer}>
-                      <AntDesign name="user" size={60} color="#fab33e" />
-                      <Text style={styles.itemSubtitle}>
-                        {item.id} {item.matricula} {item.fecha} {item.cliente}{" "}
-                        {item.dias}
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                )}
+                renderItem={({ item }) => {
+                  const fechaInicial = new Date(item.fecha);
+                  const dia = fechaInicial.getDate();
+                  const mes = fechaInicial.getMonth() + 1;
+                  const anio = fechaInicial.getFullYear();
+                  const fechaFormateada = `${dia}/${mes}/${anio}`;
+
+                  return (
+                    <TouchableOpacity onPress={() => handleAlquilerPress(item)}>
+                      <View style={styles.itemContainer}>
+                        <AntDesign name="user" size={60} color="#fab33e" />
+                        <Text style={styles.itemSubtitle}>
+                          {item.id} {item.matricula} {fechaFormateada}{" "}
+                          {item.cliente} {item.dias}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
                 keyExtractor={(item) => item.id.toString()}
                 ItemSeparatorComponent={() => <View style={styles.line} />}
               />

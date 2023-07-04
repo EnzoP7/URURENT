@@ -2,18 +2,27 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const Boton = ({ nombre = "adduser", size = 90, screenName, info }) => {
+const Boton = ({
+  nombre = "adduser",
+  size = 90,
+  screenName,
+  info,
+  icono = "AntDesign",
+}) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
     navigation.navigate(screenName);
   };
+  const Icono =
+    icono === "MaterialCommunityIcons" ? MaterialCommunityIcons : AntDesign;
   return (
     <>
       <TouchableOpacity style={styles.container} onPress={handlePress}>
         <View style={styles.viewContainer}>
-          <AntDesign name={nombre} size={size} color="#34348b" />
+          <Icono name={nombre} size={size} color="#34348b" />
           <Text>{info}</Text>
         </View>
       </TouchableOpacity>

@@ -49,6 +49,10 @@ const actions = {
     dataAlquiler.deleteAlquiler(AlquilerDelete.id);
     return [...state.filter((user) => user.id !== AlquilerDelete.id)];
   },
+  deleteAllState(state, action) {
+    dataAlquiler.deleteAllAlquiler();
+    return [];
+  },
 };
 
 const AlquilerContext = createContext();
